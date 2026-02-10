@@ -1,16 +1,12 @@
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
         Library library = new Library(10);
 
-        int choice;
-
-        do {
-            System.out.println("\n===== Library Menu =====");
+        while (true) {
+            System.out.println("\n--- Library Menu ---");
             System.out.println("1. Add book");
             System.out.println("2. Add e-book");
             System.out.println("3. Display all books");
@@ -18,19 +14,32 @@ public class Main {
             System.out.println("5. Borrow book");
             System.out.println("6. Return book");
             System.out.println("7. Exit");
-            System.out.print("Choose option: ");
+            System.out.print("Тандооңуз: ");
 
-            choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            int choice = scanner.nextInt();
+            scanner.nextLine();
 
             switch (choice) {
-
                 case 1:
-                    // TODO: Read input and add Book
+                    System.out.print("Title: ");
+                    String title = scanner.nextLine();
+                    System.out.print("Author: ");
+                    String author = scanner.nextLine();
+                    System.out.print("Year: ");
+                    int year = scanner.nextInt();
+                    library.addBook(new Book(title, author, year));
                     break;
 
                 case 2:
-                    // TODO: Read input and add EBook
+                    System.out.print("Title: ");
+                    title = scanner.nextLine();
+                    System.out.print("Author: ");
+                    author = scanner.nextLine();
+                    System.out.print("Year: ");
+                    year = scanner.nextInt();
+                    System.out.print("File size (MB): ");
+                    double size = scanner.nextDouble();
+                    library.addBook(new EBook(title, author, year, size));
                     break;
 
                 case 3:
@@ -38,27 +47,32 @@ public class Main {
                     break;
 
                 case 4:
-                    // TODO: Search book
+                    System.out.print("Title: ");
+                    title = scanner.nextLine();
+                    Book found = library.searchByTitle(title);
+                    System.out.println(found != null ? found : "Китеп табылган жок.");
                     break;
 
                 case 5:
-                    // TODO: Borrow book
+                    System.out.print("Title: ");
+                    title = scanner.nextLine();
+                    library.borrowBook(title);
                     break;
 
                 case 6:
-                    // TODO: Return book
+                    System.out.print("Title: ");
+                    title = scanner.nextLine();
+                    library.returnBook(title);
                     break;
 
                 case 7:
-                    System.out.println("Goodbye!");
-                    break;
+                    System.out.println("Программа жабылды.");
+                    scanner.close();
+                    return;
 
                 default:
-                    System.out.println("Invalid option!");
+                    System.out.println("Туура эмес тандоо.");
             }
-
-        } while (choice != 7);
-
-        scanner.close();
+        }
     }
 }

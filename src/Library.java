@@ -1,5 +1,4 @@
 public class Library {
-
     private Book[] books;
     private int count;
 
@@ -8,28 +7,50 @@ public class Library {
         count = 0;
     }
 
-    // TODO: Add book to array
     public void addBook(Book book) {
-        // implement
+        if (count < books.length) {
+            books[count++] = book;
+            System.out.println("Китеп кошулду.");
+        } else {
+            System.out.println("Китепкана толуп калды.");
+        }
     }
 
-    // TODO: Display all books
     public void displayBooks() {
-        // implement
+        if (count == 0) {
+            System.out.println("Китептер жок.");
+            return;
+        }
+
+        for (int i = 0; i < count; i++) {
+            System.out.println(books[i]);
+        }
     }
 
-    // TODO: Search book by title
     public Book searchByTitle(String title) {
+        for (int i = 0; i < count; i++) {
+            if (books[i].getTitle().equalsIgnoreCase(title)) {
+                return books[i];
+            }
+        }
         return null;
     }
 
-    // TODO: Borrow book by title
     public void borrowBook(String title) {
-        // implement
+        Book book = searchByTitle(title);
+        if (book != null) {
+            book.borrowBook();
+        } else {
+            System.out.println("Китеп табылган жок.");
+        }
     }
 
-    // TODO: Return book by title
     public void returnBook(String title) {
-        // implement
+        Book book = searchByTitle(title);
+        if (book != null) {
+            book.returnBook();
+        } else {
+            System.out.println("Китеп табылган жок.");
+        }
     }
 }
