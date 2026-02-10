@@ -4,7 +4,6 @@ public class Book {
     private int year;
     private boolean isAvailable;
 
-    // Параметрлүү конструктор
     public Book(String title, String author, int year) {
         this.title = title;
         this.author = author;
@@ -12,7 +11,6 @@ public class Book {
         this.isAvailable = true;
     }
 
-    // Copy constructor
     public Book(Book other) {
         this.title = other.title;
         this.author = other.author;
@@ -20,7 +18,6 @@ public class Book {
         this.isAvailable = other.isAvailable;
     }
 
-    // Getter'лер
     public String getTitle() {
         return title;
     }
@@ -37,20 +34,18 @@ public class Book {
         return isAvailable;
     }
 
-    // Китепти алуу
     public void borrowBook() {
         if (isAvailable) {
             isAvailable = false;
-            System.out.println("Китеп ийгиликтүү алынды.");
+            System.out.println("book borrowed successfully.");
         } else {
-            System.out.println("Китеп жеткиликтүү эмес.");
+            System.out.println("book is not available.");
         }
     }
 
-    // Китепти кайтаруу
     public void returnBook() {
         isAvailable = true;
-        System.out.println("Китеп кайтарылды.");
+        System.out.println("book returned successfully.");
     }
 
     @Override
@@ -61,7 +56,6 @@ public class Book {
                 ", Available: " + isAvailable;
     }
 
-    // equals override
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

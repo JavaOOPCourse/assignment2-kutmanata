@@ -10,15 +10,15 @@ public class Library {
     public void addBook(Book book) {
         if (count < books.length) {
             books[count++] = book;
-            System.out.println("Китеп кошулду.");
+            System.out.println("Book added successfully.");
         } else {
-            System.out.println("Китепкана толуп калды.");
+            System.out.println("Library is full.");
         }
     }
 
     public void displayBooks() {
         if (count == 0) {
-            System.out.println("Китептер жок.");
+            System.out.println("No books available.");
             return;
         }
 
@@ -41,7 +41,7 @@ public class Library {
         if (book != null) {
             book.borrowBook();
         } else {
-            System.out.println("Китеп табылган жок.");
+            System.out.println("book not found.");
         }
     }
 
@@ -50,7 +50,7 @@ public class Library {
         if (book != null) {
             book.returnBook();
         } else {
-            System.out.println("Китеп табылган жок.");
+            System.out.println("book not found.");
         }
     }
 }

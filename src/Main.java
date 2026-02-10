@@ -14,7 +14,7 @@ public class Main {
             System.out.println("5. Borrow book");
             System.out.println("6. Return book");
             System.out.println("7. Exit");
-            System.out.print("Тандооңуз: ");
+            System.out.print("choises: ");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -50,7 +50,7 @@ public class Main {
                     System.out.print("Title: ");
                     title = scanner.nextLine();
                     Book found = library.searchByTitle(title);
-                    System.out.println(found != null ? found : "Китеп табылган жок.");
+                    System.out.println(found != null ? found : "book is not founded.");
                     break;
 
                 case 5:
@@ -66,12 +66,12 @@ public class Main {
                     break;
 
                 case 7:
-                    System.out.println("Программа жабылды.");
+                    System.out.println("Program is closed.");
                     scanner.close();
                     return;
 
                 default:
-                    System.out.println("Туура эмес тандоо.");
+                    System.out.println("Invalid choice.");
             }
         }
     }
